@@ -1,22 +1,30 @@
-import {AiOutlineHeart} from 'react-icons/ai'
+import { AiOutlineHeart } from 'react-icons/ai'
 import { AiOutlineShoppingCart } from 'react-icons/ai'
-import { useDispatch, useSelector } from 'react-redux'
-const IconProduct=(props)=>{
-const {item}=props
-const dispatch=useDispatch()
-const cart=useSelector(state=>state.cart)
-const addProductCart=(item)=>{
-    dispatch(
-        {
-            type:'ADD_PRODUCT_CART',
-            payload:item
+import { useDispatch } from 'react-redux'
+const IconProduct = (props) => {
+    const { item } = props
+    const dispatch = useDispatch()
+    const addProductCart = (item) => {
+        const dataNew={
+            id:item.id,
+            title:item.title,
+            category:item.category,
+            image:item.image,
+            price:item.price,
+            quantity:1,
+            total:item.price
         }
-    )
-}
-    return(
+        dispatch(
+            {
+                type: 'ADD_PRODUCT_CART',
+                payload: dataNew
+            }
+        )
+    }
+    return (
         <>
-        <AiOutlineHeart/>
-        <AiOutlineShoppingCart onClick={()=>addProductCart(item)} />
+            <AiOutlineHeart />
+            <AiOutlineShoppingCart onClick={() => addProductCart(item)} />
         </>
     )
 }

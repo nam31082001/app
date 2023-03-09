@@ -1,11 +1,11 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 
 const Detail = () => {
     const dispatch = useDispatch()
+    const history=useHistory()
     const detail = useSelector(state => state.detail)
-    console.log(detail)
     const { id } = useParams()
     useEffect(() => {
         dispatch({
@@ -14,6 +14,34 @@ const Detail = () => {
 
         })
     }, [])
+
+    const handleAddCart=()=>{
+        const dataNew={
+            id:detail.id,
+            title:detail.title,
+            category:detail.category,
+            image:detail.image,
+            price:detail.price,
+            quantity:1,
+            total:detail.price
+        }
+        dispatch(
+            {
+                type: 'ADD_PRODUCT_CART',
+                payload: dataNew
+            }
+        )
+    }
+
+    const handleDetailBuy=(index)=>{
+        history.push('/buy_now')
+        dispatch(
+            {
+                type:'BUY_NOW',
+                payload:index
+            }
+        )
+    }
     return (
         <div className="detail">
             <div className="detail_img">
@@ -30,7 +58,7 @@ const Detail = () => {
                 </div>
                 <div className="detail_price">
                     <div>
-                       
+
                     </div>
                     <div>{detail.price}$</div>
                 </div>
@@ -38,8 +66,10 @@ const Detail = () => {
                     {detail.description}
                 </div>
                 <div className="detail_button">
-                    <button>Buy</button>
-                    <button>Add Cart</button>
+                    <button onClick={()=>handleDetailBuy(detail)}>Buy</button>
+                    <button onClick={()=>handleAddCart()}>
+                        Add Cart
+                    </button>
                 </div>
 
             </div>

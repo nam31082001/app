@@ -1,14 +1,28 @@
-import { AiOutlineClose } from 'react-icons/ai'
+
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import TableCart from './tablecarrt'
 const Cart = () => {
-    
+    let count = 0
+    const cart = useSelector(state => state.cart)
+    cart.forEach(element => {
+        count = count + element.total
+    });
+    const history=useHistory()
+
+    const handleCartBuy=()=>{
+        history.push('/buy_now')
+    }
     return (
         <div className="cart">
-            <div className='cart_icon'>
-               
+            <div className='cart_title'>
+                CART
             </div>
             <TableCart />
+            <div className='button_buy'>
+                <h2>Tổng tiền: {count} $</h2>
+                <button onClick={()=>handleCartBuy()}>BUY PRODUCT</button>
+            </div>
         </div>
     )
 }

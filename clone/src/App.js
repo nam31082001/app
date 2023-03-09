@@ -9,6 +9,9 @@ import {
   Link
 } from "react-router-dom";
 import Detail from './components/detail';
+import Cart from './components/cart';
+import From from './components/from';
+import BuyNow from './components/buyNow';
 
 function App() {
   return (
@@ -18,10 +21,19 @@ function App() {
         <Route exact path="/">
           <Content />
         </Route>
-        <Route exact path="/:id">
-         <Detail/>
+        <Route path="/cart">
+          <Cart />
+        </Route>
+        <Route path="/login">
+          <From />
+        </Route>
+        <Route path="/buy_now">
+          <BuyNow />
         </Route>
 
+        <Route path="/:id">
+          <Detail />
+        </Route>
       </Switch>
 
     </Router>
