@@ -2,6 +2,8 @@ import { useSelector } from "react-redux"
 
 const ProductBuy = () => {
     const buyNow = useSelector(state => state.buyNow)
+    const cart = useSelector(state => state.cart)
+    const check = useSelector(state => state.checkCart)
     return (
         <div className="product_buy">
             <table>
@@ -14,14 +16,35 @@ const ProductBuy = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td className="product_buy_img">
-                            <img src={buyNow.image} />
-                        </td>
-                        <td>{buyNow.title}</td>
-                        <td>X{buyNow.quantity}</td>
-                        <td>{buyNow.price}$</td>
-                    </tr>
+                    {check ?
+                        <>
+                            <tr>
+                                <td className="product_buy_img">
+                                    <img src={buyNow.image} />
+                                </td>
+                                <td>{buyNow.title}</td>
+                                <td>X{buyNow.quantity}</td>
+                                <td>{buyNow.price}$</td>
+                            </tr>
+                        </>
+                        :
+                        <>
+                            {cart.map(item => {
+                                return (
+                                    <tr key={item.id}>
+                                        <td className="product_buy_img">
+                                            <img src={item.image} />
+                                        </td>
+                                        <td>{item.title}</td>
+                                        <td>X{item.quantity}</td>
+                                        <td>{item.price}$</td>
+                                    </tr>
+                                )
+                            })}
+                        </>
+
+                    }
+
                 </tbody>
                 <tfoot></tfoot>
 

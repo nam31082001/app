@@ -1,4 +1,4 @@
-import { ADD_ADDRESS, ADD_PRODUCT_CART, BUY_NOW, DELETE, DELETE_ADDRESS, DETAIL_API, GET_API, INCREASE, REDUCE, UPDATE_ADDRESS } from "./action"
+import { ADD_ADDRESS, ADD_PRODUCT_CART, BUY_NOW, CHECK_CART, DELETE, DELETE_ADDRESS, DETAIL_API, GET_API, INCREASE, REDUCE, UPDATE_ADDRESS } from "./action"
 
 const initState = {
     data: [],
@@ -11,7 +11,8 @@ const initState = {
         { id: 100, name: "Cao Van Nam", phone: '0824006601', address: 'Số nhà 18 ngõ 24 phố kim mã hai bà trung hà nội' },
         { id: 101, name: "Cao Van Bắc", phone: '0824006602', address: 'Số nhà 19 ngõ 24 phố kim mã hai bà trung hà nội' },
         { id: 102, name: "Cao Van Trung", phone: '0824006603', address: 'Số nhà 20 ngõ 24 phố kim mã hai bà trung hà nội' },
-    ]
+    ],
+    checkCart: true
 }
 
 const rootReducer = (state = initState, action) => {
@@ -80,7 +81,7 @@ const rootReducer = (state = initState, action) => {
         case BUY_NOW:
 
             return {
-                ...state, buyNow: action.payload
+                ...state, buyNow: action.payload, checkCart: true
             }
         case ADD_ADDRESS:
             return { ...state, address: [...state.address, action.payload] }
@@ -90,15 +91,17 @@ const rootReducer = (state = initState, action) => {
         case UPDATE_ADDRESS:
             console.log(action.payload)
             const updateAddress = [...state.address]
-            updateAddress.forEach((item,index)=>{
-                if(item.id===action.payload.id){
-                    item.name=action.payload.name
-                    item.phone=action.payload.phone
-                    item.address=action.payload.address
+            updateAddress.forEach((item, index) => {
+                if (item.id === action.payload.id) {
+                    item.name = action.payload.name
+                    item.phone = action.payload.phone
+                    item.address = action.payload.address
                 }
             })
 
-            return { ...state,address:updateAddress }
+            return { ...state, address: updateAddress }
+        case CHECK_CART:
+            return { ...state, checkCart: false }
         default:
             return state
     }

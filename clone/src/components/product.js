@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom'
 const Product = () => {
     const dispatch = useDispatch()
     const data = useSelector(state => state.data)
+    const check=useSelector(state=>state.checkCart)
+    
    const history=useHistory()
     useEffect(() => {
         dispatch({
@@ -29,6 +31,7 @@ const Product = () => {
                 payload:dataNew
             }
         )
+
     }
     return (
         <div className="product">

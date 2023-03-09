@@ -12,23 +12,29 @@ import TotalBuyNow from './totalBuyNow'
 const BuyNow = () => {
     const [checkMethod, setCheckMethod] = useState('')
     const [checkChangeAddress, setCheckChangeAddress] = useState(true)
-    const [itemAddress,setItemAddress]=useState({})
+    const [itemAddress, setItemAddress] = useState({})
+    const cart = useSelector(state => state.cart)
+    const check = useSelector(state => state.checkCart)
     const buyNow = useSelector(state => state.buyNow)
+    let count = 0
+    cart.forEach(element => {
+        count = count + element.total
+    });
     const handleMethod = (index) => {
         setCheckMethod(index)
     }
     const handleAddressTitle = (index) => {
         setCheckChangeAddress(index)
     }
-    const handleAddressTitleClose=(index)=>{
+    const handleAddressTitleClose = (index) => {
         setCheckChangeAddress(index)
     }
-    const handleClickAddress=()=>{
+    const handleClickAddress = () => {
         setCheckChangeAddress(false)
     }
-    const handleClickAddressTitle=(index)=>{
+    const handleClickAddressTitle = (index) => {
         setItemAddress(index)
-     
+
     }
     return (
         <div className="buy_now">
@@ -36,17 +42,26 @@ const BuyNow = () => {
                 SHOP/PAY
             </div>
             <div className="address">
-                <h2> <BiMap />  Address <button onClick={()=>handleClickAddress()}>+</button></h2>
+                <h2> <BiMap />  Address <button onClick={() => handleClickAddress()}>+</button></h2>
             </div>
-            <AddressTitle handleAddressTitle={handleAddressTitle} itemAddress={itemAddress}/>
+            <AddressTitle handleAddressTitle={handleAddressTitle} itemAddress={itemAddress} />
             <ProductBuy />
             <div className='total_price'>
-                <span> Tổng Tiền :<span>{buyNow.price}</span> $</span>
+                {
+                    check ?
+                        <>
+                            <span> Tổng Tiền :<span>{buyNow.price}</span> $</span>
+                        </>
+                        :
+                        <>
+                            <span> Tổng Tiền :<span>{count}</span> $</span>
+                        </>
+                }
             </div>
             <MethodPay handleMethod={handleMethod} />
             <MethodPayTitle checkMethod={checkMethod} />
-            <TotalBuyNow checkMethod={checkMethod}/>
-            {checkChangeAddress === false && <ChangeAddress handleAddressTitleClose={handleAddressTitleClose} handleClickAddressTitle={handleClickAddressTitle}/>}
+            <TotalBuyNow checkMethod={checkMethod} count={count}/>
+            {checkChangeAddress === false && <ChangeAddress handleAddressTitleClose={handleAddressTitleClose} handleClickAddressTitle={handleClickAddressTitle} />}
         </div>
     )
 }
