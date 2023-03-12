@@ -8,10 +8,10 @@ import { GrUpdate } from 'react-icons/gr'
 import UpdateAddress from './updateAddress'
 const ChangeAddress = (props) => {
     const dispatch = useDispatch()
+    const address = useSelector(state => state.address)
     const [checkAddress, setCheckAddress] = useState(false)
     const [checkUpdateAddress, setCheckUpdateAddress] = useState(false)
     const [dataUpdateAddress, setDataUpdateAddress] = useState({})
-    const address = useSelector(state => state.address)
     const { handleAddressTitleClose, handleClickAddressTitle } = props
     const handleAddAddress = (index) => {
         setCheckAddress(index)
@@ -29,54 +29,59 @@ const ChangeAddress = (props) => {
     }
     return (
         <div className="change_address">
-            {
-                !checkAddress ?
-                    <>
-                        <div>
-                            <div>
-                                <GrClose onClick={() => handleAddressTitleClose(true)} />
-                            </div>
-                            <div>
-                                {
-                                    address.map((item, index) => {
-                                        return (
-                                            <div key={item.id}>
-                                                <div>
-                                                    <p>
-                                                        <span>{item.name}</span> | <spam>{item.phone}</spam>
-                                                    </p>
-                                                    <p>
-                                                        {item.address}
-                                                    </p>
+            {checkUpdateAddress ?
+                <>
+                    <UpdateAddress dataUpdateAddress={dataUpdateAddress} handleUpdateAddressClose={handleUpdateAddressClose} />
+                </>
+                :
+                <>
+                    {
+                        !checkAddress ?
+                            <>
+                                <div>
+                                    <div>
+                                        <GrClose onClick={() => handleAddressTitleClose(true)} />
+                                    </div>
+                                    <div>
+                                        {
+                                            address.map((item, index) => {
+                                                return (
+                                                    <div key={item.id}>
+                                                        <div>
+                                                            <p>
+                                                                <span>{item.name}</span> | <spam>{item.phone}</spam>
+                                                            </p>
+                                                            <p>
+                                                                {item.address}
+                                                            </p>
 
-                                                </div>
-                                                <div>
+                                                        </div>
+                                                        <div>
 
-                                                    <TbHandClick onClick={() => handleTbHandClick(item)} />
-                                                    <AiOutlineDelete onClick={() => dispatch({ type: "DELETE_ADDRESS", payload: item.id })} />
-                                                    <GrUpdate onClick={() => handleUpdateAddress(item)} />
+                                                            <TbHandClick onClick={() => handleTbHandClick(item)} />
+                                                            <AiOutlineDelete onClick={() => dispatch({ type: "DELETE_ADDRESS", payload: item.id })} />
+                                                            <GrUpdate onClick={() => handleUpdateAddress(item)} />
 
-                                                </div>
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                            <div>
-                                <button onClick={() => setCheckAddress(true)}>
-                                    +  Add Address
-                                </button>
-                            </div>
-                        </div>
-                    </>
-                    :
-                    <>
-                        <AddAddress handleAddAddress={handleAddAddress} />
-                    </>
-
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                    <div>
+                                        <button onClick={() => setCheckAddress(true)}>
+                                            +  Add Address
+                                        </button>
+                                    </div>
+                                </div>
+                            </>
+                            :
+                            <>
+                                <AddAddress handleAddAddress={handleAddAddress} />
+                            </>
+                    }
+                </>
             }
-
-            {checkUpdateAddress && <UpdateAddress dataUpdateAddress={dataUpdateAddress} handleUpdateAddressClose={handleUpdateAddressClose} />}
         </div>
     )
 }

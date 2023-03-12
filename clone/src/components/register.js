@@ -27,7 +27,7 @@ const Register=(props)=>{
                </div>
             </div>
             <p>
-            If you have an account, please <span onClick={()=>handleCheckLogin(true)}>login</span> now
+            If you have an account, please <span onClick={()=>handleCheckLogin()}>login</span> now
             </p>
         </>
     )

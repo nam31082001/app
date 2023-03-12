@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom'
 
 
 const Login = (props) => {
-    const {handleCheckLogin}=props
-    const history=useHistory()
+    const { handleCheckLogin } = props
+    const history = useHistory()
     return (
         <>
             <h1>LOGIN</h1>
@@ -15,18 +15,18 @@ const Login = (props) => {
                 <label>Password</label><br /><br />
                 <input type='password' placeholder="Password" /><br />
                 <div>
-                    <button onClick={()=>history.push('/')}>Login up</button>
+                    <button onClick={() => history.push('/')}>Login up</button>
                 </div>
             </form>
             <div className="login_icon">
-               <div>
-               <FaFacebookF />
-                <BsInstagram />
-                <BsFillTelephoneFill />
-               </div>
+                <div>
+                    <FaFacebookF />
+                    <BsInstagram />
+                    <BsFillTelephoneFill />
+                </div>
             </div>
             <p>
-            If you don't have an account, please <span onClick={()=>handleCheckLogin(false)} >register</span> now
+                If you don't have an account, please <span onClick={() => handleCheckLogin()} >register</span> now
             </p>
         </>
     )

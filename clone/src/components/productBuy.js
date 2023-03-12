@@ -8,7 +8,7 @@ const ProductBuy = () => {
         <div className="product_buy">
             <table>
                 <thead>
-                    <tr>
+                    <tr className="product_buy_tr">
                         <th>Product</th>
                         <th>Name</th>
                         <th>Quantity</th>
@@ -23,7 +23,7 @@ const ProductBuy = () => {
                                     <img src={buyNow.image} />
                                 </td>
                                 <td>{buyNow.title}</td>
-                                <td>X{buyNow.quantity}</td>
+                                <td>X1</td>
                                 <td>{buyNow.price}$</td>
                             </tr>
                         </>

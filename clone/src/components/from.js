@@ -4,44 +4,26 @@ import Register from "./register"
 
 const From = () => {
     const [checkLogin, setCheckLogin] = useState(true)
-    const handleCheckLogin = (index) => {
-        setCheckLogin(index)
+   
+
+    const handleDisplay = () => {
+        !checkLogin ? setCheckLogin(true) : setCheckLogin(false)
+    }
+    const handleCheckLogin=()=>{
+        !checkLogin ? setCheckLogin(true) : setCheckLogin(false)
+        
     }
     return (
         <div className="from">
-          
-                <div className="login">
-                    {checkLogin === false ?
-                        <>
-                            <div>
-                                <button onClick={() => setCheckLogin(true)}> LOGIN</button>
-                            </div>
-                        </> :
-                        <>
-                            <Login handleCheckLogin={handleCheckLogin} />
-                        </>}
-                </div>
-           
-
-           
-                <div className="register">
-                    {checkLogin === true ?
-                        <>
-                            <div>
-                                <button onClick={() => setCheckLogin(false)}> REGISTER </button>
-                            </div>
-                        </> :
-                        <>
-                            <Register handleCheckLogin={handleCheckLogin} />
-                        </>}
-                </div>
-            
-
-
-
-
+            <div className="login">
+                {!checkLogin&&<button onClick={() => handleDisplay()}>LOGIN</button>}
+                {checkLogin&&<div> <Login handleCheckLogin={handleCheckLogin}/></div>}
+            </div>
+            <div className="register">
+                {checkLogin&& <button onClick={() => handleDisplay()}>REGISTER</button>}
+                {!checkLogin && <div><Register handleCheckLogin={handleCheckLogin}/></div>}
+            </div>
         </div>
-
     )
 }
 export default From
