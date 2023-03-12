@@ -18,3 +18,5 @@ export const DELETE_ADDRESS='DELETE_ADDRESS'
 export const UPDATE_ADDRESS='UPDATE_ADDRESS'
 export const CHECK_CART='CHECK_CART'
 export const ADD_ASSESS='ADD_ASSESS'
+
+export const DETAIL_NEW='DETAIL_NEW'

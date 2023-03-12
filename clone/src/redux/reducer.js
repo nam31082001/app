@@ -1,4 +1,9 @@
-import { ADD_ADDRESS, ADD_ASSESS, ADD_PRODUCT_CART, BUY_NOW, CHECK_CART, DELETE, DELETE_ADDRESS, DETAIL_API, GET_API, INCREASE, REDUCE, UPDATE_ADDRESS } from "./action"
+import { ADD_ADDRESS, 
+    ADD_ASSESS, 
+    ADD_PRODUCT_CART, 
+    BUY_NOW, CHECK_CART, 
+    DELETE, DELETE_ADDRESS, 
+    DETAIL_API, DETAIL_NEW, GET_API, INCREASE, REDUCE, UPDATE_ADDRESS } from "./action"
 
 const initState = {
     data: [],
@@ -131,6 +136,7 @@ const rootReducer = (state = initState, action) => {
             ...state,
             assess:[...state.assess,action.payload]
         }
+
         default:
             return state
     }

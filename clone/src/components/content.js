@@ -5,6 +5,7 @@ import Product from "./product"
 
 const Content = () => {
     const dispatch = useDispatch()
+    const [check, setCheck] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [posterPage, setposterPage] = useState(6)
     const data = useSelector(state => state.data)
@@ -13,13 +14,19 @@ const Content = () => {
             type: 'GET'
         })
     }, [])
+    setTimeout(() => {
+        setCheck(true)
+    }, 2000);
+    const handelCheck=()=>{
+        setCheck(false)
+    }
     const lastPostIndex = currentPage * posterPage
     const firstPostIndex = lastPostIndex - posterPage
     const currentPost = data.slice(firstPostIndex,lastPostIndex)
     return (
         <div className="content">
-            <Product data={currentPost} />
-            <Pagination totalPosts={data.length} postPerPage={posterPage} setCurrentPage={setCurrentPage} currentPage={currentPage}/>
+            <Product data={currentPost} check={check} />
+            <Pagination totalPosts={data.length} postPerPage={posterPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handelCheck={handelCheck}/>
         </div>
     )
 }

@@ -2,8 +2,10 @@
 import { useDispatch } from 'react-redux'
 import IconProduct from './iconProduct'
 import { useHistory } from 'react-router-dom'
+
 const Product = (props) => {
-    const {data}=props
+    
+    const { data,check } = props
     const dispatch = useDispatch()
     const history = useHistory()
     const handleBuyNow = (item) => {
@@ -24,24 +26,32 @@ const Product = (props) => {
             {
                 data.map(item => {
                     return (
-                        <div className='product_item' key={item.id}>
-                            <div className='product_item_image'>
-                                <img src={item.image} />
-                            </div>
-                            <div className='product_item_title'>
-                                {item.title}
-                            </div>
-                            <div className='product_item_price'>
-                                {item.price}$
-                            </div>
-                            <div className='product_item_button'>
-                                <button onClick={() => handleBuyNow(item)}>Buy Now</button>
-                                <button onClick={() => history.push(`/${item.id}`)}>Detail</button>
-                            </div>
-                            <div className='product_item_icon'>
-                                <IconProduct item={item} />
-                            </div>
-                        </div>
+                        <>
+                            {check ?
+                                <>
+                                    <div className='product_item ' key={item.id}>
+                                        <div className='product_item_image'>
+                                            <img src={item.image} />
+                                        </div>
+                                        <div className='product_item_title'>
+                                            {item.title}
+                                        </div>
+                                        <div className='product_item_price'>
+                                            {item.price}$
+                                        </div>
+                                        <div className='product_item_button'>
+                                            <button onClick={() => handleBuyNow(item)}>Buy Now</button>
+                                            <button onClick={() => history.push(`/${item.id}`)}>Detail</button>
+                                        </div>
+                                        <div className='product_item_icon'>
+                                            <IconProduct item={item} />
+                                        </div>
+                                    </div>
+                                </>
+                                :
+                                <> <div className='product_item loading ' key={item.id}></div></>
+                            }
+                        </>
                     )
                 })
             }

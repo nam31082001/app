@@ -23,6 +23,22 @@
 .header_icon>* {
     margin: 0 20px;
 }
+.header_cart_icon:hover{
+    animation: cart_icon 1s ease;
+    transition-delay: 1.2s;
+}
+@keyframes cart_icon {
+    0%{
+        transform: scale(0.8);
+    }
+   50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+
+    }
+}
 
 
 
@@ -661,6 +677,11 @@ td {
     grid-template-columns: 80% 20%;
 }
 
+.information_product>div>div:nth-child(1) {
+    height: 1000px;
+    overflow-y: scroll;
+}
+
 .information_product>div>div:nth-child(1)>div {
     display: flex;
 }
@@ -684,7 +705,71 @@ td {
 }
 
 .information_product>div>div:nth-child(2) {
-    background: red;
+    height: 1000px;
+    overflow-y: scroll;
+}
+
+.nam {
+    position: relative;
+}
+
+.nam>div {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nam>div>button{
+    width: 150px;
+    border: none;
+    display: none;
+}
+@keyframes buttons {
+    0%{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+   100%{
+        opacity: 1;
+        transform: translateY();
+    }
+}
+.nam>div:hover button{
+    display: inline;
+    animation: buttons 1s ease;
+}
+
+.information_product>div>div:nth-child(2)>div:nth-child(2)>*:hover.nam>div {
+    background: rgb(255, 255, 255, 0.5);
+}
+
+.information_product>div>div:nth-child(2)>div:nth-child(2)>div {
+    margin-top: 40px;
+}
+
+.information_product>div>div:nth-child(2)>div:nth-child(2)>div>img {
+    width: 100%;
+    object-fit: fill;
+    height: 150px
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 
@@ -696,19 +781,23 @@ td {
     flex-direction: column;
     position: relative;
 }
-.add_assess>p{
+
+.add_assess>p {
     margin-bottom: 50px;
 }
-.add_assess>span{
+
+.add_assess>span {
     display: block;
     text-align: center;
     font-size: 25px;
     margin-bottom: 20px;
 }
-.add_assess>span>*:hover{
+
+.add_assess>span>*:hover {
     color: yellow;
 }
-.add_assess>p >span{
+
+.add_assess>p>span {
     position: relative;
     margin-left: 130px;
 }
@@ -721,10 +810,10 @@ td {
     font-size: 15px;
 }
 
- .name_label{
+.name_label {
     width: 75px;
     position: absolute;
-    top:-1px;
+    top: -1px;
     left: 12px;
     color: rgba(0, 0, 0, 0.5);
     font-size: 1rem;
@@ -732,42 +821,45 @@ td {
     /* padding-inline: 20px; */
 }
 
-.name_input:focus~.name_label
- {
+.name_input:focus~.name_label {
     top: -30px;
     left: 0.5rem;
     background: #fff;
     font-size: 1.2rem;
 }
 
- @keyframes notification {
-    0%{
+@keyframes notification {
+    0% {
         transform: scale(0);
         opacity: 0;
     }
-    100%{
+
+    100% {
         transform: scale(1);
         opacity: 1;
     }
- }
+}
 
 
 /* upload_img */
-.upload_img>div{
+.upload_img>div {
     display: flex;
 }
-.upload_img>div>div{
+
+.upload_img>div>div {
     width: 200px;
     height: 200px;
     object-fit: cover;
-   position: relative;
+    position: relative;
 
 }
-.upload_img>div>div>img{
+
+.upload_img>div>div>img {
     width: 200px;
     height: 200px;
 }
-.upload_img>div>div>span{
+
+.upload_img>div>div>span {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -775,11 +867,12 @@ td {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background:whitesmoke;
+    background: whitesmoke;
     position: absolute;
     top: 0;
     left: 0px;
 }
+
 /* paginatio */
 .pagination {
     display: flex;
@@ -809,9 +902,51 @@ td {
 }
 
 /* footer */
-.footer{
-    width: 90%;
-    height: 300px;
+.footer>div:nth-child(1) {
+    width: 100%;
+    height: 250px;
     margin: 20px auto 0 auto;
-    background: #817a7a;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
 }
+
+.footer>div:nth-child(1)>* {
+    margin: 0 20px;
+}
+
+.footer>div:nth-child(2) {
+    width: 100%;
+    height: 30px;
+    background: rgb(140, 137, 137);
+}
+/* loading */
+.loading {
+	position: relative;
+	background-color: #b8b8b8 !important;
+	overflow: hidden;
+	border-radius: 10px;
+}
+
+.loading::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	transform: translateX(-100%);
+	background-image: linear-gradient(
+		to right,
+		rgba(255, 255, 255, 0.5),
+		transparent
+	);
+	animation: loading 1s infinite;
+}
+
+@keyframes loading {
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+

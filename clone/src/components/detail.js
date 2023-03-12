@@ -1,9 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import InformationProduct from "./informationProduct"
 
 const Detail = () => {
+    const [check, setCheck] = useState(false)
     const dispatch = useDispatch()
     const history = useHistory()
     const detail = useSelector(state => state.detail)
@@ -15,6 +16,12 @@ const Detail = () => {
 
         })
     }, [])
+    setTimeout(() => {
+        setCheck(true)
+    }, 2000);
+    const handelCheck=()=>{
+        setCheck(false)
+    }
 
     const handleAddCart = () => {
         const dataNew = {
@@ -45,39 +52,51 @@ const Detail = () => {
     }
     return (
         <>
-            <div className="detail">
-                <div className="detail_img">
-                    <div>
-                        <img src={detail.image} />
-                    </div>
-                </div>
-                <div className="detail_title">
-                    <div className="detail_title_header">
-                        {detail.title}
-                    </div>
-                    <div className="detail_category">
-                        {detail.category}
-                    </div>
-                    <div className="detail_price">
-                        <div>
+            {
+                check ?
+                    <>
+                        <div className="detail ">
+                            <div className="detail_img ">
+                                <div>
+                                    <img src={detail.image} />
+                                </div>
+                            </div>
+                            <div className="detail_title">
+                                <div className="detail_title_header">
+                                    {detail.title}
+                                </div>
+                                <div className="detail_category ">
+                                    {detail.category}
+                                </div>
+                                <div className="detail_price ">
+                                    <div>
+
+                                    </div>
+                                    <div>{detail.price}$</div>
+                                </div>
+                                <div className="detail_description ">
+                                    {detail.description}
+                                </div>
+                                <div className="detail_button">
+                                    <button onClick={() => handleDetailBuy(detail)}>Buy</button>
+                                    <button onClick={() => handleAddCart()}>
+                                        Add Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="information_product">
+                            <InformationProduct detail={detail} handelCheck={handelCheck}/>
+                        </div>
+                    </>
+                    :
+                    <>
+
+                        <div className="detail loading">
 
                         </div>
-                        <div>{detail.price}$</div>
-                    </div>
-                    <div className="detail_description">
-                        {detail.description}
-                    </div>
-                    <div className="detail_button">
-                        <button onClick={() => handleDetailBuy(detail)}>Buy</button>
-                        <button onClick={() => handleAddCart()}>
-                            Add Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div className="information_product">
-                <InformationProduct detail={detail}/>
-            </div>
+                    </>
+            }
         </>
 
     )

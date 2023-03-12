@@ -1,8 +1,9 @@
 import AssessClient from "./AssessClient"
+import RelatedProduct from "./relatedProduct"
+
 
 const InformationProduct = (props) => {
-    const { detail } = props
-    console.log(detail)
+    const { detail,handelCheck } = props
     return (
         <>
             <h3>Information Product</h3>
@@ -16,9 +17,11 @@ const InformationProduct = (props) => {
                 <AssessClient />
                 <div>
                     <div>
-                        <h2>Related Products</h2>
+                        <h2>Related Product</h2>
                     </div>
-
+                    <div className="related_product">
+                        <RelatedProduct handelCheck={handelCheck}/>
+                    </div>
                 </div>
             </div>
         </>

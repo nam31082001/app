@@ -1,11 +1,9 @@
 import { CiFaceSmile } from 'react-icons/ci'
 import { AiOutlineStar, AiOutlineLike } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
 import AddAssess from './addAssess'
 const AssessClient = () => {
     const data = useSelector(state => state.assess)
-   
     return (
         <div>
             {
