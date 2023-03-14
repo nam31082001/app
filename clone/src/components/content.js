@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import useCategory from "../cutums/category"
 import Pagination from "./pagination"
 import Product from "./product"
 import Search from "./search"
+import '../css/content.css'
 
 const Content = () => {
     const dispatch = useDispatch()

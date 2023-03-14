@@ -1,0 +1,96 @@
+.change_address {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change_address>div {
+    width: 40%;
+    height: 600px;
+    overflow: scroll;
+    background: rgb(190, 175, 175);
+    animation: address 0.5s ease;
+}
+
+@keyframes address {
+    0% {
+        transform: scale(0.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.change_address>div>div:nth-child(2)>div {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.change_address>div>div:nth-child(2)>div>div:nth-child(1) {
+    width: 60%;
+}
+
+.change_address>div>div:nth-child(2)>div>div:nth-child(2)>* {
+    margin: 0 5px;
+    width: 50px;
+    font-family: 300;
+    border: none;
+    cursor: pointer;
+}
+
+.change_address>div>div:nth-child(2)>div>div:nth-child(2)>*:hover {
+    color: red;
+}
+
+.change_address>div>div:nth-child(2)>div>div:nth-child(1)>p:nth-child(2) {
+    font-size: 20px;
+}
+
+.change_address>div>div:nth-child(3)>button {
+    margin: 0 0 10px 20px;
+    width: 150px;
+    height: 30px;
+    font-weight: 700;
+    border: none;
+    background: white;
+
+}
+
+
+.input_address>form>label {
+    margin-left: 100px;
+    font-size: 25px;
+}
+
+.input_address>form {
+    margin-top: 20px;
+}
+
+.input_address>form>input {
+    margin-left: 150px;
+    width: 60%;
+    height: 40px;
+    border: none;
+}
+
+.input_address>div:nth-child(3) {
+    text-align: center;
+}
+
+.input_address>div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input_address>div:nth-child(1)>span {
+    font-size: 30px;
+}

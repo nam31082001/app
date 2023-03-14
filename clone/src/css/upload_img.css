@@ -1,0 +1,30 @@
+.upload_img>div {
+    display: flex;
+}
+
+.upload_img>div>div {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    position: relative;
+
+}
+
+.upload_img>div>div>img {
+    width: 200px;
+    height: 200px;
+}
+
+.upload_img>div>div>span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: whitesmoke;
+    position: absolute;
+    top: 0;
+    left: 0px;
+}

@@ -1,0 +1,61 @@
+.header {
+    background: rgb(228, 135, 197);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.header>h1 {
+    cursor: pointer;
+}
+
+.header>* {
+    margin: 0 50px;
+}
+
+.header_icon {
+    font-size: 40px;
+}
+
+.header_icon>* {
+    margin: 0 20px;
+}
+
+.header_cart_icon {
+    transition-delay: 1.2s;
+    cursor: pointer;
+}
+
+.header_cart_icon:hover {
+    animation: cart_icon 1s ease;
+
+}
+
+@keyframes cart_icon {
+    0% {
+        transform: scale(0.8);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+
+    }
+}
+
+.header>div:nth-child(3) {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 10px;
+    right: 90px;
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

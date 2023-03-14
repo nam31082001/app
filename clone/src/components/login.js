@@ -1,6 +1,7 @@
 import { FaFacebookF } from 'react-icons/fa'
 import { BsInstagram, BsFillTelephoneFill } from 'react-icons/bs'
 import { useHistory } from 'react-router-dom'
+import '../css/login.css'
 
 
 const Login = (props) => {

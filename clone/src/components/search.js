@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { useDispatch, useSelector } from 'react-redux'
+import '../css/search.css'
 const Search = ({ handleClickSearch, setCurrentPage, setposterPage, handelCheck }) => {
     const [inputSearch, setInputSearch] = useState('')
     const dispatch = useDispatch()

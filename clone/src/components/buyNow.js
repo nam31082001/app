@@ -1,4 +1,4 @@
-
+import '../css/buyNow.css'
 import { useState } from 'react'
 import { BiMap } from 'react-icons/bi'
 import { useSelector } from 'react-redux'

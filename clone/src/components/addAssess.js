@@ -2,6 +2,7 @@ import { useState, lazy, Suspense } from "react"
 import { AiOutlineStar } from 'react-icons/ai'
 import { useDispatch } from "react-redux"
 import CheckLoading from "./checkLoding"
+import '../css/addAssess.css'
 
 const UpLoadFile = lazy(() => import('./uploadImg'))
 const AddAssess = () => {

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import '../css/pagination.css'
 
 
 const Pagination = ({ totalPosts, postPerPage, setCurrentPage, currentPage, handelCheck, setposterPage }) => {

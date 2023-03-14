@@ -2,6 +2,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { CiFaceMeh } from 'react-icons/ci'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+import '../css/header.css'
 
 const Header = () => {
     const history = useHistory()

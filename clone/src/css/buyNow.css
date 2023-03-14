@@ -1,0 +1,116 @@
+.buy_now {
+    width: 100%;
+    margin: auto;
+    position: relative;
+    margin-top: 20px;
+}
+
+.buy_now_title {
+    margin: 10px 0 10px 10px;
+    font-size: 30px;
+    color: red;
+}
+
+.address {
+    margin-left: 30px;
+}
+
+.address>h2 {
+    margin-bottom: 10px;
+}
+
+.address_title {
+    margin-left: 50px;
+}
+
+.address_title>tr>td {
+    font-size: 20px;
+}
+
+.address_title>tr>td:nth-child(1) {
+    font-weight: 800;
+}
+
+.address_title>tr>td:not(:nth-child(2)) {
+    width: 200px;
+}
+
+.product_buy>table {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.product_buy_img>img {
+    width: 100px;
+}
+
+.total_price {
+    font-size: 25px;
+    text-align: end;
+}
+
+.total_price>span {
+    color: red
+}
+
+.method_pay {
+    padding: 20px 0 0 100px
+}
+
+.method_pay>span {
+    font-size: 40px;
+}
+
+.method_pay>button {
+    width: 100px;
+    height: 30px;
+    margin: 0 20px;
+}
+
+.method_pay_title {
+    margin: 20px 0 0 200px;
+}
+
+.method_pay_title>button {
+    width: 100px;
+    height: 30px;
+    border: 1px unset;
+}
+
+.method_pay_title>p>img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.total_price>span {
+    margin-right: 50px;
+}
+
+.total_buy_now {
+    text-align: end;
+    margin-top: 50px;
+}
+
+.total_buy_now>div {
+    margin-right: 50px;
+}
+
+.total_buy_now>div>h1>span {
+    color: red;
+}
+
+.total_buy_now>div>p {
+    opacity: 0.7;
+}
+
+.total_buy_now>button {
+    width: 200px;
+    height: 30px;
+    font-family: 800;
+    background: red;
+    border: none;
+    margin-top: 10px;
+    margin-right: 50px;
+
+}

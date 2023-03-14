@@ -1,5 +1,6 @@
 import AssessClient from "./AssessClient"
 import RelatedProduct from "./relatedProduct"
+import '../css/informtionProduct.css'
 
 
 const InformationProduct = (props) => {

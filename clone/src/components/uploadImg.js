@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { IoMdClose } from 'react-icons/io'
+import '../css/upload_img.css'
 const UpLoadFile = (props) => {
     const {addFileImg}=props
     const [img, setImg] = useState([])

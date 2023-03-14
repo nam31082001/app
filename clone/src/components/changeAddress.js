@@ -1,4 +1,4 @@
-import { useDebugValue, useState } from 'react'
+import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import { useDispatch, useSelector } from 'react-redux'
 import AddAddress from './addAddresss'
@@ -8,6 +8,7 @@ import { GrUpdate } from 'react-icons/gr'
 import UpdateAddress from './updateAddress'
 import useCheckLoading from '../cutums/checkLoading'
 import CheckLoading from './checkLoding'
+import '../css/change_address.css'
 const ChangeAddress = (props) => {
     const dispatch = useDispatch()
     const [checkLoading2, setCheckLoading2] = useState(true)
