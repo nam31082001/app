@@ -1,7 +1,6 @@
 const AddressTitle = (props) => {
     const { handleAddressTitle, itemAddress } = props
     const check = Object.keys(itemAddress).length === 0
-
     return (
         <div className="address_title">
             <tr>
@@ -19,7 +18,7 @@ const AddressTitle = (props) => {
                 }
 
                 <td>
-                    <button onClick={() => handleAddressTitle(false)}>Change</button>
+                    <button onClick={() => handleAddressTitle(false)} style={{width:'150px'}}>Change</button>
                 </td>
             </tr>
         </div>

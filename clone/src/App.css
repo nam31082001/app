@@ -24,27 +24,33 @@
 .header_icon>* {
     margin: 0 20px;
 }
-.header_cart_icon{
+
+.header_cart_icon {
     transition-delay: 1.2s;
     cursor: pointer;
 }
-.header_cart_icon:hover{
+
+.header_cart_icon:hover {
     animation: cart_icon 1s ease;
-    
+
 }
+
 @keyframes cart_icon {
-    0%{
+    0% {
         transform: scale(0.8);
     }
-   50%{
+
+    50% {
         transform: scale(1.2);
     }
-    100%{
+
+    100% {
         transform: scale(1);
 
     }
 }
-.header>div:nth-child(3){
+
+.header>div:nth-child(3) {
     width: 25px;
     height: 25px;
     position: absolute;
@@ -134,7 +140,8 @@
     justify-content: space-between;
     font-size: 20px;
 }
-.product_item_icon>*:hover{
+
+.product_item_icon>*:hover {
     transform: scale(1.2);
     color: red;
     cursor: pointer;
@@ -324,6 +331,11 @@ td {
     background: red;
 }
 
+.cart_product {
+    width: 100%;
+    height: 570px;
+    overflow-x: scroll;
+}
 
 /* login */
 .from {
@@ -690,7 +702,7 @@ td {
 }
 
 /* BUY now loading */
-.check_loading{
+.check_loading {
     width: 100%;
     background: red;
     display: flex;
@@ -698,7 +710,8 @@ td {
     align-items: center;
     position: relative;
 }
-.check_loading>div{
+
+.check_loading>div {
     width: 200px;
     height: 200px;
     position: absolute;
@@ -713,12 +726,14 @@ td {
     position: relative;
     width: 80px;
     height: 80px;
-  }
-  .lds-roller div {
+}
+
+.lds-roller div {
     animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     transform-origin: 40px 40px;
-  }
-  .lds-roller div:after {
+}
+
+.lds-roller div:after {
     content: " ";
     display: block;
     position: absolute;
@@ -727,71 +742,89 @@ td {
     border-radius: 50%;
     background: #211f1f;
     margin: -4px 0 0 -4px;
-  }
-  .lds-roller div:nth-child(1) {
+}
+
+.lds-roller div:nth-child(1) {
     animation-delay: -0.036s;
-  }
-  .lds-roller div:nth-child(1):after {
+}
+
+.lds-roller div:nth-child(1):after {
     top: 63px;
     left: 63px;
-  }
-  .lds-roller div:nth-child(2) {
+}
+
+.lds-roller div:nth-child(2) {
     animation-delay: -0.072s;
-  }
-  .lds-roller div:nth-child(2):after {
+}
+
+.lds-roller div:nth-child(2):after {
     top: 68px;
     left: 56px;
-  }
-  .lds-roller div:nth-child(3) {
+}
+
+.lds-roller div:nth-child(3) {
     animation-delay: -0.108s;
-  }
-  .lds-roller div:nth-child(3):after {
+}
+
+.lds-roller div:nth-child(3):after {
     top: 71px;
     left: 48px;
-  }
-  .lds-roller div:nth-child(4) {
+}
+
+.lds-roller div:nth-child(4) {
     animation-delay: -0.144s;
-  }
-  .lds-roller div:nth-child(4):after {
+}
+
+.lds-roller div:nth-child(4):after {
     top: 72px;
     left: 40px;
-  }
-  .lds-roller div:nth-child(5) {
+}
+
+.lds-roller div:nth-child(5) {
     animation-delay: -0.18s;
-  }
-  .lds-roller div:nth-child(5):after {
+}
+
+.lds-roller div:nth-child(5):after {
     top: 71px;
     left: 32px;
-  }
-  .lds-roller div:nth-child(6) {
+}
+
+.lds-roller div:nth-child(6) {
     animation-delay: -0.216s;
-  }
-  .lds-roller div:nth-child(6):after {
+}
+
+.lds-roller div:nth-child(6):after {
     top: 68px;
     left: 24px;
-  }
-  .lds-roller div:nth-child(7) {
+}
+
+.lds-roller div:nth-child(7) {
     animation-delay: -0.252s;
-  }
-  .lds-roller div:nth-child(7):after {
+}
+
+.lds-roller div:nth-child(7):after {
     top: 63px;
     left: 17px;
-  }
-  .lds-roller div:nth-child(8) {
+}
+
+.lds-roller div:nth-child(8) {
     animation-delay: -0.288s;
-  }
-  .lds-roller div:nth-child(8):after {
+}
+
+.lds-roller div:nth-child(8):after {
     top: 56px;
     left: 12px;
-  }
-  @keyframes lds-roller {
+}
+
+@keyframes lds-roller {
     0% {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     100% {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
 
 
 /* information_product */
@@ -846,22 +879,26 @@ td {
     justify-content: center;
     align-items: center;
 }
-.nam>div>button{
+
+.nam>div>button {
     width: 150px;
     border: none;
     display: none;
 }
+
 @keyframes buttons {
-    0%{
+    0% {
         opacity: 0;
         transform: translateY(50px);
     }
-   100%{
+
+    100% {
         opacity: 1;
         transform: translateY();
     }
 }
-.nam>div:hover button{
+
+.nam>div:hover button {
     display: inline;
     animation: buttons 1s ease;
 }
@@ -1043,40 +1080,90 @@ td {
     height: 30px;
     background: rgb(140, 137, 137);
 }
+
 /* loading */
 .loading {
-	position: relative;
-	background-color: #b8b8b8 !important;
-	overflow: hidden;
-	border-radius: 10px;
+    position: relative;
+    background-color: #b8b8b8 !important;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .loading::after {
-	content: '';
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	transform: translateX(-100%);
-	background-image: linear-gradient(
-		to right,
-		rgba(255, 255, 255, 0.5),
-		transparent
-	);
-	animation: loading 1s infinite;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    background-image: linear-gradient(to right,
+            rgba(255, 255, 255, 0.5),
+            transparent);
+    animation: loading 1s infinite;
 }
 
 @keyframes loading {
-	100% {
-		transform: translateX(100%);
-	}
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 
 
-.icon_cart:hover{
+.icon_cart:hover {
     cursor: pointer;
     color: red;
 }
 
+
+
+.search {
+    width: 100%;
+    text-align: center;
+}
+
+.search>* {
+    margin: 10px 0 10px 0;
+}
+
+.search>div:nth-child(1) {
+    display: flex;
+}
+
+.search>div:nth-child(1)>input {
+    width: 300px;
+    height: 40px;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+    border-right: white;
+    border: 1px solid;
+}
+
+.search_input {
+    display: flex;
+    justify-content: center;
+}
+
+.icon_search {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 10px 10px 0;
+
+}
+
+.search>div:nth-child(2)>* {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid;
+}
+
+.search>div:nth-child(2)>*:hover {
+    background: rgb(213, 186, 186);
+}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const UpdateAddress = (props) => {
-    const { dataUpdateAddress,handleUpdateAddressClose } = props
+    const { dataUpdateAddress,handleUpdateAddressClose,setCheckLoading2 } = props
     const dispatch=useDispatch()
     const [user, setUser] = useState({ name: dataUpdateAddress.name, phone: dataUpdateAddress.phone, address: dataUpdateAddress.address });
     const setValueForUser = (key,value) => {
@@ -17,6 +17,8 @@ const UpdateAddress = (props) => {
                 }
             )
             handleUpdateAddressClose(false)
+           
+        
     }
     return (
         <div className="input_address">

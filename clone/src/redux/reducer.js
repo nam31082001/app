@@ -9,10 +9,15 @@ import {
     INCREASE,
     REDUCE,
     UPDATE_ADDRESS,
-    NUMBER
+    NUMBER,
+    BUTTON_SEARCH,
+    BUTTON_ALL,
+    TEXT_SEARCH,
+    TEXT_SEARCH_DATA
 } from "./action"
 
 const initState = {
+    textSearch: '',
     data: [],
     detail: {},
     cart: [],
@@ -49,7 +54,10 @@ const initState = {
             feedback: "Thank you for reviewing 2s Clothing Hope you had a great experience at the shop. Hope 2s Clothing can serve you in the near future"
         },
     ],
-    number: 0
+    number: 0,
+    searchNumber: [],
+    checkSearch: false
+
 }
 
 const rootReducer = (state = initState, action) => {
@@ -63,10 +71,7 @@ const rootReducer = (state = initState, action) => {
             const index = action.payload
             const cartCopy = [...state.cart]
             if (cartCopy.length === 0) {
-                return {
-                    ...state,
-                    cart: [...state.cart, index]
-                }
+                return {...state, cart: [...state.cart, index]}
             }
             cartCopy.map(item => {
                 if (item.id === index.id) {
@@ -81,30 +86,23 @@ const rootReducer = (state = initState, action) => {
                     cart: [...state.cart, index]
                 }
             }
-            return {
-                ...state
-            }
+            return { ...state}
         case DELETE:
             const copyCart = [...state.cart]
             const cartNew = copyCart.filter(item => item.id !== action.payload)
-
-            return {
-                ...state,
-                cart: cartNew,
-                number:state.number-1
-            }
-
+            return {...state, cart: cartNew, number: state.number - 1 }
         case REDUCE:
             const copyCartReduce = [...state.cart]
             copyCartReduce.forEach((item, index) => {
                 if (item.id === action.payload) {
                     item.quantity--
                     item.total = item.quantity * item.price
+                    if(item.quantity===0){
+                        copyCartReduce.splice(index,1)
+                    }
                 }
             })
-            return {
-                ...state, cart: copyCartReduce
-            }
+            return {...state, cart: copyCartReduce}
         case INCREASE:
             const copyCartIncrease = [...state.cart]
             copyCartIncrease.forEach((item, index) => {
@@ -113,14 +111,9 @@ const rootReducer = (state = initState, action) => {
                     item.total = item.quantity * item.price
                 }
             })
-            return {
-                ...state, cart: copyCartIncrease
-            }
+            return {...state, cart: copyCartIncrease}
         case BUY_NOW:
-
-            return {
-                ...state, buyNow: action.payload, checkCart: true
-            }
+            return {...state, buyNow: action.payload, checkCart: true}
         case ADD_ADDRESS:
             return { ...state, address: [...state.address, action.payload] }
         case DELETE_ADDRESS:
@@ -136,18 +129,29 @@ const rootReducer = (state = initState, action) => {
                     item.address = action.payload.address
                 }
             })
-
             return { ...state, address: updateAddress }
         case CHECK_CART:
             return { ...state, checkCart: false }
         case ADD_ASSESS:
-            return {
-                ...state,
-                assess: [...state.assess, action.payload]
-            }
+            return {...state, assess: [...state.assess, action.payload] }
         case NUMBER:
-            return { ...state,number:state.cart.length}
-
+            return { ...state, number: state.cart.length }
+        case BUTTON_SEARCH:
+            const dataCopy = [...state.data]
+            const data = dataCopy.filter(item => item.category === action.payload)
+            return { ...state, searchNumber: data, checkSearch: true }
+        case BUTTON_ALL:
+            return { ...state, checkSearch: false }
+        case TEXT_SEARCH:
+            return { ...state, textSearch: action.payload }
+        case TEXT_SEARCH_DATA:
+            const dataTextSearch = [...state.data]
+            dataTextSearch.forEach((item, index) => {
+                if (!item.title.toLowerCase().includes(action.payload)) {
+                    dataTextSearch.splice(index, 1)
+                }
+            })
+            return { ...state, searchNumber: dataTextSearch, checkSearch: true }
         default:
             return state
     }

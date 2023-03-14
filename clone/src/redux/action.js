@@ -21,3 +21,7 @@ export const ADD_ASSESS='ADD_ASSESS'
 
 export const DETAIL_NEW='DETAIL_NEW'
 export const NUMBER='NUMBER'
+export const BUTTON_SEARCH='BUTTON_SEARCH'
+export const BUTTON_ALL='BUTTON_ALL'
+export const TEXT_SEARCH='TEXT_SEARCH'
+export const TEXT_SEARCH_DATA='TEXT_SEARCH_DATA'

@@ -21,7 +21,6 @@ const TableCart = () => {
                 <tbody>
                     {cart.map(item => {
                         return (
-
                             <tr key={item.id}>
                                 <td className="table_img">
                                     <img src={item.image} />

@@ -6,15 +6,21 @@ import { AiOutlineDelete } from 'react-icons/ai'
 import { TbHandClick } from 'react-icons/tb'
 import { GrUpdate } from 'react-icons/gr'
 import UpdateAddress from './updateAddress'
+import useCheckLoading from '../cutums/checkLoading'
+import CheckLoading from './checkLoding'
 const ChangeAddress = (props) => {
     const dispatch = useDispatch()
+    const [checkLoading2, setCheckLoading2] = useState(true)
     const address = useSelector(state => state.address)
     const [checkAddress, setCheckAddress] = useState(false)
+    const { checkLoading } = useCheckLoading()
     const [checkUpdateAddress, setCheckUpdateAddress] = useState(false)
     const [dataUpdateAddress, setDataUpdateAddress] = useState({})
     const { handleAddressTitleClose, handleClickAddressTitle } = props
     const handleAddAddress = (index) => {
-        setCheckAddress(index)
+        setTimeout(() => {
+            setCheckAddress(index)
+        }, 2000);
     }
     const handleUpdateAddress = (index) => {
         setCheckUpdateAddress(true)
@@ -27,57 +33,91 @@ const ChangeAddress = (props) => {
         handleClickAddressTitle(item)
         handleAddressTitleClose(true)
     }
+    const handleAddAddressButton = () => {
+        setCheckAddress(true)
+        setTimeout(() => {
+            setCheckLoading2(false)
+        }, 2000);
+    }
     return (
         <div className="change_address">
             {checkUpdateAddress ?
                 <>
-                    <UpdateAddress dataUpdateAddress={dataUpdateAddress} handleUpdateAddressClose={handleUpdateAddressClose} />
+                    {
+
+                        <UpdateAddress
+                            dataUpdateAddress={dataUpdateAddress}
+                            handleUpdateAddressClose={handleUpdateAddressClose}
+                        />
+
+                    }
+
                 </>
                 :
                 <>
                     {
-                        !checkAddress ?
+                        !checkLoading ?
                             <>
-                                <div>
-                                    <div>
-                                        <GrClose onClick={() => handleAddressTitleClose(true)} />
-                                    </div>
-                                    <div>
-                                        {
-                                            address.map((item, index) => {
-                                                return (
-                                                    <div key={item.id}>
-                                                        <div>
-                                                            <p>
-                                                                <span>{item.name}</span> | <spam>{item.phone}</spam>
-                                                            </p>
-                                                            <p>
-                                                                {item.address}
-                                                            </p>
-
-                                                        </div>
-                                                        <div>
-
-                                                            <TbHandClick onClick={() => handleTbHandClick(item)} />
-                                                            <AiOutlineDelete onClick={() => dispatch({ type: "DELETE_ADDRESS", payload: item.id })} />
-                                                            <GrUpdate onClick={() => handleUpdateAddress(item)} />
-
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                    <div>
-                                        <button onClick={() => setCheckAddress(true)}>
-                                            +  Add Address
-                                        </button>
-                                    </div>
-                                </div>
+                                <CheckLoading />
                             </>
                             :
                             <>
-                                <AddAddress handleAddAddress={handleAddAddress} />
+                                {
+                                    !checkAddress ?
+                                        <>
+                                            <div>
+                                                <div>
+                                                    <GrClose onClick={() => handleAddressTitleClose(true)} />
+                                                </div>
+                                                <div>
+                                                    {
+                                                        address.map((item, index) => {
+                                                            return (
+                                                                <div key={item.id}>
+                                                                    <div>
+                                                                        <p>
+                                                                            <span>{item.name}</span> | <spam>{item.phone}</spam>
+                                                                        </p>
+                                                                        <p>
+                                                                            {item.address}
+                                                                        </p>
+
+                                                                    </div>
+                                                                    <div>
+
+                                                                        <TbHandClick onClick={() => handleTbHandClick(item)} />
+                                                                        <AiOutlineDelete onClick={() => dispatch({ type: "DELETE_ADDRESS", payload: item.id })} />
+                                                                        <GrUpdate onClick={() => handleUpdateAddress(item)} />
+
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        })
+                                                    }
+                                                </div>
+                                                <div>
+                                                    <button onClick={() => handleAddAddressButton()}>
+                                                        +  Add Address
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </>
+                                        :
+                                        <>
+                                            {
+                                                checkLoading2 ?
+                                                    <>
+                                                        <CheckLoading />
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <AddAddress
+                                                            handleAddAddress={handleAddAddress}
+                                                            setCheckLoading2={setCheckLoading2} />
+                                                    </>
+                                            }
+                                        </>
+                                }
                             </>
                     }
                 </>
