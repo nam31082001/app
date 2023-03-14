@@ -8,6 +8,7 @@ const Content = () => {
     const [check, setCheck] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [posterPage, setposterPage] = useState(6)
+    const [dataCheck, setDataCheck] = useState([])
     const data = useSelector(state => state.data)
     useEffect(() => {
         dispatch({
@@ -17,16 +18,29 @@ const Content = () => {
     setTimeout(() => {
         setCheck(true)
     }, 2000);
-    const handelCheck=()=>{
+    const handelCheck = () => {
         setCheck(false)
     }
     const lastPostIndex = currentPage * posterPage
     const firstPostIndex = lastPostIndex - posterPage
-    const currentPost = data.slice(firstPostIndex,lastPostIndex)
+    const currentPost = data.slice(firstPostIndex, lastPostIndex)
+    console.log(currentPost)
+
+    
     return (
         <div className="content">
-            <Product data={currentPost} check={check} />
-            <Pagination totalPosts={data.length} postPerPage={posterPage} setCurrentPage={setCurrentPage} currentPage={currentPage} handelCheck={handelCheck}/>
+            <Product
+                data={currentPost}
+                check={check}
+            />
+            <Pagination
+                totalPosts={data.length}
+                postPerPage={posterPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                handelCheck={handelCheck}
+                setposterPage={setposterPage}
+            />
         </div>
     )
 }

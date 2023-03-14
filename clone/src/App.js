@@ -1,45 +1,45 @@
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Content from './components/content';
 import Header from './components/header';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-import Detail from './components/detail';
-import Cart from './components/cart';
-import From from './components/from';
-import BuyNow from './components/buyNow';
-import Footer from './components/footer';
+import DetailRoute from './Router/detailRoute';
+
+const Home = React.lazy(() => import('./Router/home'))
+const FromRoute = React.lazy(() => import('./Router/from'))
+const Cart = React.lazy(() => import('./components/cart'))
+const BuyNowRoute = React.lazy(() => import('./Router/buyNow'))
 
 function App() {
   return (
     <Router>
       <Header />
-      <Switch>
-        <Route exact path="/">
-          <Content />
-          <Footer/>
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-        <Route path="/login">
-          <From />
-          <Footer/>
-        </Route>
-        <Route path="/buy_now">
-          <BuyNow />
-        </Route>
-        <Route path="/:id">
-          <Detail />
-          <Footer/>
-        </Route>
-      </Switch>
-   
+      <React.Suspense>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+          <Route path="/login">
+            <FromRoute />
+          </Route>
+          <Route path="/buy_now">
+            <BuyNowRoute />
+          </Route>
+          <Route path="/:id">
+            <DetailRoute />
+          </Route>
+        </Switch>
+      </React.Suspense>
+
+
 
     </Router>
   );

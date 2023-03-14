@@ -20,10 +20,15 @@ const IconProduct = (props) => {
                 payload: dataNew
             }
         )
+        dispatch(
+            {
+                type:'NUMBER'
+            }
+        )
     }
     return (
         <>
-            <AiOutlineHeart />
+            <AiOutlineHeart  />
             <AiOutlineShoppingCart onClick={() => addProductCart(item)} />
         </>
     )

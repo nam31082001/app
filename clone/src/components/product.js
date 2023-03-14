@@ -2,6 +2,9 @@
 import { useDispatch } from 'react-redux'
 import IconProduct from './iconProduct'
 import { useHistory } from 'react-router-dom'
+import React from 'react'
+
+
 
 const Product = (props) => {
     

@@ -20,3 +20,4 @@ export const CHECK_CART='CHECK_CART'
 export const ADD_ASSESS='ADD_ASSESS'
 
 export const DETAIL_NEW='DETAIL_NEW'
+export const NUMBER='NUMBER'

@@ -1,9 +1,16 @@
-import { ADD_ADDRESS, 
-    ADD_ASSESS, 
-    ADD_PRODUCT_CART, 
-    BUY_NOW, CHECK_CART, 
-    DELETE, DELETE_ADDRESS, 
-    DETAIL_API, DETAIL_NEW, GET_API, INCREASE, REDUCE, UPDATE_ADDRESS } from "./action"
+import {
+    ADD_ADDRESS,
+    ADD_ASSESS,
+    ADD_PRODUCT_CART,
+    BUY_NOW, CHECK_CART,
+    DELETE, DELETE_ADDRESS,
+    DETAIL_API,
+    GET_API,
+    INCREASE,
+    REDUCE,
+    UPDATE_ADDRESS,
+    NUMBER
+} from "./action"
 
 const initState = {
     data: [],
@@ -41,7 +48,8 @@ const initState = {
             img: ['https://bom.so/yDNS8l', `https://bom.so/GvBJ2i`, `https://bom.so/W4QrrI`],
             feedback: "Thank you for reviewing 2s Clothing Hope you had a great experience at the shop. Hope 2s Clothing can serve you in the near future"
         },
-    ]
+    ],
+    number: 0
 }
 
 const rootReducer = (state = initState, action) => {
@@ -82,7 +90,8 @@ const rootReducer = (state = initState, action) => {
 
             return {
                 ...state,
-                cart: cartNew
+                cart: cartNew,
+                number:state.number-1
             }
 
         case REDUCE:
@@ -131,11 +140,13 @@ const rootReducer = (state = initState, action) => {
             return { ...state, address: updateAddress }
         case CHECK_CART:
             return { ...state, checkCart: false }
-       case ADD_ASSESS:
-        return{
-            ...state,
-            assess:[...state.assess,action.payload]
-        }
+        case ADD_ASSESS:
+            return {
+                ...state,
+                assess: [...state.assess, action.payload]
+            }
+        case NUMBER:
+            return { ...state,number:state.cart.length}
 
         default:
             return state
