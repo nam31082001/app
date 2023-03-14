@@ -1138,6 +1138,8 @@ td {
     outline: none;
     border-right: white;
     border: 1px solid;
+    border-right: 0px;
+
 }
 
 .search_input {
@@ -1154,6 +1156,7 @@ td {
     justify-content: center;
     align-items: center;
     border-radius: 0 10px 10px 0;
+    border-left: 0px;
 
 }
 

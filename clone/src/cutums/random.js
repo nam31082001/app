@@ -4,14 +4,15 @@ const useRandom=()=>{
     let arr = []
     let arrData=[]
     const data = useSelector(state => state.data)
-    for (let i = 0; i < 10; i++) {
+    for (let i = 1; i < 11; i++) {
         const id = Math.floor(Math.random() * 20)
         arr.push(id)
     }
+   
     for (let j = 0; j < arr.length; j++) {
         arr.forEach(item => {
             if (item === arr[j]) {
-                item = Math.floor(Math.random() * 20)
+                item = Math.floor(Math.random() * 21)
             }
         })
     }
